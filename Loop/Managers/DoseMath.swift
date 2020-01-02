@@ -60,6 +60,7 @@ extension InsulinCorrection {
 
         return TempBasalRecommendation(
             unitsPerHour: rate,
+            scheduledUnitsPerHour: scheduledBasalRate,
             duration: duration
         )
     }
@@ -106,11 +107,12 @@ extension InsulinCorrection {
 
 struct TempBasalRecommendation: Equatable {
     let unitsPerHour: Double
+    let scheduledUnitsPerHour: Double
     let duration: TimeInterval
 
     /// A special command which cancels any existing temp basals
     static var cancel: TempBasalRecommendation {
-        return self.init(unitsPerHour: 0, duration: 0)
+        return self.init(unitsPerHour: 0, scheduledUnitsPerHour: 0, duration: 0)
     }
 }
 
