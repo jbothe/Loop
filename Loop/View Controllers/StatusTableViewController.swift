@@ -804,8 +804,8 @@ final class StatusTableViewController: ChartsTableViewController {
                     timeFormatter.dateStyle = .none
                     timeFormatter.timeStyle = .short
 
-                    cell.titleLabel.text = NSLocalizedString("Recommended Basal", comment: "The title of the cell displaying a recommended temp basal value")
-                    cell.subtitleLabel?.text = String(format: NSLocalizedString("%1$@ U/hour @ %2$@", comment: "The format for recommended temp basal rate and time. (1: localized rate number)(2: localized time)"), NumberFormatter.localizedString(from: NSNumber(value: tempBasal.unitsPerHour), number: .decimal), timeFormatter.string(from: date))
+                    cell.titleLabel.text = NSLocalizedString("Rec Temp Basal", comment: "The title of the cell displaying a recommended temp basal value")
+                    cell.subtitleLabel?.text = String(format: NSLocalizedString("%1$@ U/hr (%2$@) @ %3$@", comment: "The format for recommended temp basal rate and time. (1: localized rate number)(2: localized rate compared to scheduled basal rate)(3: localized time)"), NumberFormatter.localizedString(from: NSNumber(value: tempBasal.unitsPerHour), number: .decimal), NumberFormatter.localizedString(from: NSNumber(value: tempBasal.unitsPerHour / tempBasal.scheduledUnitsPerHour), number: .percent), timeFormatter.string(from: date))
                     cell.selectionStyle = .default
 
                     if enacting {
